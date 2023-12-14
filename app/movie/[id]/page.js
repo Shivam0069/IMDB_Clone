@@ -1,19 +1,15 @@
 import Image from "next/legacy/image";
-import React from "react";
 
 async function getMovie(movieId) {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}`
   );
-
   return await res.json();
 }
+
 export default async function MoviePage({ params }) {
   const movieId = params.id;
-
   const movie = await getMovie(movieId);
-
   return (
     <div className="w-full">
       <div className="p-4 md:pt-8 flex flex-col md:flex-row items-center content-center max-w-6xl mx-auto md:space-x-6">
@@ -24,10 +20,13 @@ export default async function MoviePage({ params }) {
           width={500}
           height={300}
           className="rounded-lg"
-          style={{ maxWidth: "100%", height: "100%" }}
+          style={{
+            maxWidth: "100%",
+            height: "100%",
+          }}
           placeholder="blur"
           blurDataURL="/spinner.svg"
-          alt="Movie poster "
+          alt="Movie poster"
         ></Image>
         <div className="p-2">
           <h2 className="text-lg mb-3 font-bold">
@@ -38,11 +37,11 @@ export default async function MoviePage({ params }) {
             {movie.overview}
           </p>
           <p className="mb-3">
-            <span className="font-semibold mr-1">Date Released:</span>{" "}
+            <span className="font-semibold mr-1">Date Released:</span>
             {movie.release_date || movie.first_air_date}
           </p>
           <p className="mb-3">
-            <span className="font-semibold mr-1">Rating:</span>{" "}
+            <span className="font-semibold mr-1">Rating:</span>
             {movie.vote_count}
           </p>
         </div>
