@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 async function getMovie(movieId) {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const res = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${process.env.API_KEY}`
   );
