@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { FaRegThumbsUp } from "react-icons/fa6";
+// var slugify = require("slugify");
 export default function Card({ result }) {
+  //   var link = result.title || result.name;
+  //   link = slugify(link, "_");
   return (
     <div className="cursor-pointer sm:p-3 sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200 group">
       <Link href={`/movie/${result.id}`}>
@@ -25,7 +28,7 @@ export default function Card({ result }) {
           </h2>
           <p className="flex items-center ">
             {result.release_date || result.first_air_date}
-            <FaRegThumbsUp className="h-5 ml-3 mr-1"  />
+            <FaRegThumbsUp className="h-5 ml-3 mr-1" />
             {result.vote_count}
           </p>
         </div>
